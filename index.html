@@ -8,7 +8,7 @@
 
     <meta
       name="description"
-      content="Estudio web independiente. Soluciones personalizadas, sitios web, micrositios y landing pages para profesionales, pymes y proyectos culturales."
+      content="Diseñamos y desarrollamos soluciones web adaptadas a las necesidades de tu actividad, desde sitios profesionales hasta herramientas digitales personalizadas."
     />
 
     <meta name="theme-color" content="#111418" />
@@ -32,7 +32,6 @@
   </head>
 
   <body>
-    <a class="skip-link" href="#contenido">Ir al contenido</a>
     <!-- ======================================================
        HEADER
   ======================================================= -->
@@ -43,6 +42,7 @@
           <div class="brand-mark" aria-hidden="true">
             <span></span>
             <span></span>
+
             <span></span>
             <span></span>
           </div>
@@ -65,7 +65,7 @@
           <span></span>
         </button>
 
-        <nav class="main-nav" id="main-navigation" aria-label="Navegación principal">
+        <nav class="main-nav" id="main-navigation">
           <a href="#soluciones">Soluciones</a>
           <a href="#productos">Productos</a>
           <a href="#proyectos">Proyectos</a>
@@ -79,7 +79,7 @@
       </div>
     </header>
 
-    <main id="contenido" tabindex="-1">
+    <main>
       <!-- ======================================================
          HERO
     ======================================================= -->
@@ -97,8 +97,8 @@
             </h1>
 
             <p class="hero-description">
-              Somos un estudio web independiente. Diseñamos sitios y herramientas para profesionales, pymes y
-              proyectos culturales que quieren mostrar su trabajo, recibir consultas u ordenar tareas como reservas y agendas.
+              Diseñamos y desarrollamos soluciones web adaptadas a las necesidades de tu actividad, desde sitios
+              profesionales hasta herramientas digitales personalizadas.
             </p>
 
             <div class="hero-actions">
@@ -107,8 +107,8 @@
                 <span aria-hidden="true">→</span>
               </a>
 
-              <a href="#proyectos" class="text-link">
-                Ver proyectos
+              <a href="#soluciones" class="text-link">
+                Ver soluciones
                 <span aria-hidden="true">↓</span>
               </a>
             </div>
@@ -116,29 +116,31 @@
 
           <!-- Visual modular -->
 
-          <div class="hero-visual" aria-hidden="true">
-            <div class="module module-a"></div>
+          <div class="hero-visual-container">
+  <div class="hero-visual" id="hero-visual" aria-hidden="true">
+    <div class="module module-a"></div>
+    <div class="module module-b"></div>
+    <div class="module module-c"></div>
+    <div class="module module-d"></div>
+    <div class="module module-e"></div>
 
-            <div class="module module-b"></div>
+    <div class="module-line line-a"></div>
+    <div class="module-line line-b"></div>
+    <div class="module-line line-c"></div>
 
-            <div class="module module-c"></div>
+    <div class="module-label label-a">necesidad</div>
+    <div class="module-label label-b">solución</div>
+  </div>
 
-            <div class="module module-d"></div>
-
-            <div class="module module-e"></div>
-
-            <div class="module-line line-a"></div>
-
-            <div class="module-line line-b"></div>
-
-            <div class="module-line line-c"></div>
-
-            <div class="module-label label-a">necesidad</div>
-
-            <div class="module-label label-b">solución</div>
-          </div>
-        </div>
-      </section>
+  <button
+    class="hero-motion-toggle"
+    type="button"
+    aria-controls="hero-visual"
+    hidden
+  >
+    Pausar animación
+  </button>
+</div>
 
       <!-- ======================================================
          PROBLEMA
@@ -217,13 +219,13 @@
                 <span class="solution-type"> Principal </span>
               </div>
 
-              <h3>Soluciones personalizadas</h3>
+              <h3>Soluciones web personalizadas</h3>
 
               <h4>Cuando una página web no alcanza.</h4>
 
               <p>
-                Desarrollamos herramientas web a medida para organizar tareas como gestionar una agenda,
-                recibir solicitudes o administrar reservas.
+                Diseñamos herramientas digitales a partir de una necesidad concreta: simplificar procesos, organizar
+                información, gestionar datos o incorporar funcionalidades específicas a tu actividad.
               </p>
 
               <a href="#contacto" class="text-link">
@@ -242,51 +244,12 @@
               <h4>Una presencia digital construida alrededor de tu proyecto.</h4>
 
               <p>
-                Creamos sitios para presentar una institución, un negocio o un proyecto, con sus servicios y
-                formas de contacto en un mismo lugar.
+                Diseñamos y desarrollamos sitios para negocios, profesionales, organizaciones y emprendimientos,
+                adaptando estructura, contenido y funcionalidades a cada proyecto.
               </p>
 
               <a href="#contacto" class="text-link">
-                Consultar por un sitio
-                <span aria-hidden="true">→</span>
-              </a>
-            </article>
-
-            <article class="solution-card">
-              <div class="solution-top">
-                <span class="solution-number"> 03 </span>
-              </div>
-
-              <h3>Micrositios</h3>
-
-              <h4>Lo esencial de tu proyecto, listo para compartir.</h4>
-
-              <p>
-                Reunimos información, enlaces y contacto en una página breve que se puede compartir fácilmente.
-              </p>
-
-              <a href="https://dockr.bio/" target="_blank" rel="noopener noreferrer" class="text-link">
-                Conocer Dockr
-                <span aria-hidden="true">↗</span>
-              </a>
-            </article>
-
-            <article class="solution-card">
-              <div class="solution-top">
-                <span class="solution-number"> 04 </span>
-              </div>
-
-              <h3>Landing pages</h3>
-
-              <h4>Una página enfocada en el próximo paso.</h4>
-
-              <p>
-                Diseñamos páginas enfocadas en una acción concreta, como consultar por un servicio,
-                inscribirse en un evento o conocer un lanzamiento.
-              </p>
-
-              <a href="#contacto" class="text-link">
-                Contanos tu objetivo
+                Ver soluciones
                 <span aria-hidden="true">→</span>
               </a>
             </article>
@@ -349,7 +312,7 @@
                   simple y personalizada.
                 </p>
 
-                <a href="https://dockr.bio/" target="_blank" rel="noopener noreferrer" class="text-link">
+                <a href="#" class="text-link">
                   Conocer Dockr
                   <span aria-hidden="true">→</span>
                 </a>
@@ -518,54 +481,9 @@
             <div>
               <span class="eyebrow"> PROYECTOS </span>
 
-              <h2>Proyectos para necesidades concretas.</h2>
+              <h2>No mostramos solamente lo que hacemos. Mostramos cómo lo resolvemos.</h2>
             </div>
           </div>
-
-          <article class="featured-project">
-            <div class="project-preview project-preview-sfda" aria-hidden="true">
-              <div class="project-identity">
-                <span>Sitio institucional</span>
-                <strong>SFDA</strong>
-                <p>Sociedad de Fomento y Defensa Agraria</p>
-                <span class="project-domain">sfda.com.uy</span>
-              </div>
-            </div>
-
-            <div class="project-content">
-              <span class="project-type"> Sitio web institucional </span>
-
-              <h3>SFDA</h3>
-
-              <p class="project-description">
-                Nano Web Design desarrolló el sitio institucional de la Sociedad de Fomento y Defensa Agraria.
-                El sitio reúne noticias, información sobre los servicios de la Sociedad y sus canales de contacto.
-              </p>
-
-              <div class="project-detail">
-                <span> Necesidad </span>
-                <p>Presentar a la institución y facilitar el acceso a información sobre su actividad y sus servicios.</p>
-              </div>
-
-              <div class="project-detail">
-                <span> Solución </span>
-                <p>Un sitio institucional con noticias, servicios y contacto organizados en un mismo lugar.</p>
-              </div>
-
-              <div class="project-actions">
-                <a
-                  href="https://sfda.com.uy/pages/inicio.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn btn-primary"
-                  aria-label="Ver sitio de SFDA"
-                >
-                  Ver sitio
-                  <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-            </div>
-          </article>
 
           <article class="featured-project">
             <div class="project-preview">
@@ -623,7 +541,6 @@
                   target="_blank"
                   rel="noopener noreferrer"
                   class="btn btn-primary"
-                  aria-label="Ver sitio de El Desafinado"
                 >
                   Ver sitio
                   <span aria-hidden="true">↗</span>
@@ -647,52 +564,17 @@
         <div class="container final-cta-inner">
           <span class="eyebrow eyebrow-light"> HABLEMOS </span>
 
-          <h2>¿Qué necesitás resolver?</h2>
+          <h2>¿Tenés un problema que podría resolverse mejor?</h2>
 
-          <p>
-            Contanos qué hacés, qué te gustaría mejorar y para cuándo lo necesitás.
-            Con esa información podemos definir el alcance y preparar una propuesta.
-          </p>
+          <p>Contanos cómo trabajás, qué necesitás o qué te está haciendo perder tiempo.</p>
 
-          <form class="contact-form" id="contact-form" data-whatsapp="59893939221" hidden>
-            <div class="contact-fields">
-              <div class="contact-field">
-                <label for="contact-name">Nombre</label>
-                <input id="contact-name" name="name" autocomplete="name" maxlength="100" required />
-              </div>
-
-              <div class="contact-field">
-                <label for="contact-email">Email <span>(opcional)</span></label>
-                <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" />
-              </div>
-
-              <div class="contact-field contact-field-wide">
-                <label for="contact-message">Contanos sobre tu proyecto</label>
-                <textarea id="contact-message" name="message" rows="4" maxlength="1000" required></textarea>
-              </div>
-
-              <div class="contact-field">
-                <label for="contact-date">Fecha deseada <span>(opcional)</span></label>
-                <input id="contact-date" name="date" type="date" />
-              </div>
-            </div>
-
-            <p class="form-note" id="contact-note">
-              Prepará tu consulta y continuá en WhatsApp para enviarla.
-            </p>
-
-            <button type="submit" class="btn btn-light" aria-describedby="contact-note">Preparar consulta</button>
-
-            <div class="contact-draft" id="contact-draft" tabindex="-1" aria-labelledby="draft-heading" hidden>
-              <h3 id="draft-heading">Tu consulta está lista para revisar</h3>
-              <p>Revisala y abrí WhatsApp para enviarla.</p>
-              <pre id="draft-preview"></pre>
-              <a class="btn btn-primary" id="draft-whatsapp" target="_blank" rel="noopener noreferrer">Continuar en WhatsApp</a>
-            </div>
-          </form>
+          <strong> Nosotros vemos cómo puede ayudarte la web. </strong>
 
           <div class="final-cta-actions">
-            <a href="https://wa.me/59893939221" target="_blank" rel="noopener noreferrer" class="text-link">Escribinos directamente por WhatsApp</a>
+            <a href="mailto:contacto@nanowebdesign.com" class="btn btn-light">
+              Contanos tu idea
+              <span aria-hidden="true">→</span>
+            </a>
           </div>
         </div>
       </section>
@@ -735,14 +617,16 @@
         <div class="footer-column">
           <span class="footer-title"> Contacto </span>
 
-          <a href="https://wa.me/59893939221" target="_blank" rel="noopener noreferrer"> WhatsApp </a>
+          <a href="#"> WhatsApp </a>
 
-          <!-- Email previsto: contacto@nanowebdesign.com. Activar cuando esté creada la casilla. -->
+          <a href="mailto:contacto@nanowebdesign.com"> Email </a>
+
+          <a href="#" target="_blank" rel="noopener noreferrer"> Instagram </a>
         </div>
       </div>
 
       <div class="container footer-bottom">
-        <span> © <span id="current-year">2026</span> Nano Web Design </span>
+        <span> © <span id="current-year">2023</span> Nano Web Design </span>
 
         <span> Built in Uruguay. </span>
       </div>

@@ -157,6 +157,7 @@
 }
 
 .module-line {
+  width: var(--line-width);
   position: absolute;
   z-index: 1;
 
@@ -169,7 +170,7 @@
   top: 147px;
   left: 122px;
 
-  width: 170px;
+  --line-width: 170px;
 
   transform: rotate(15deg);
 }
@@ -178,7 +179,7 @@
   top: 280px;
   left: 50px;
 
-  width: 220px;
+  --line-width: 220px;
 
   transform: rotate(-14deg);
 }
@@ -187,7 +188,7 @@
   right: 52px;
   bottom: 130px;
 
-  width: 230px;
+  --line-width: 230px;
 
   transform: rotate(21deg);
 }
@@ -1410,16 +1411,70 @@
   }
 
   .line-a {
-    width: 120px;
+    --line-width: 120px;
   }
 
   .line-b {
-    width: 150px;
+    --line-width: 150px;
   }
 
   .line-c {
-    width: 160px;
+    --line-width: 160px;
   }
+  @keyframes module-float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(
+      var(--float-x, 4px),
+      var(--float-y, -8px)
+    );
+  }
+}
+
+@keyframes connection-flow {
+  0%, 6% {
+    opacity: 0;
+    transform: translateX(0) scale(0.5);
+  }
+
+  12%, 28% {
+    opacity: 1;
+  }
+
+  34%, 100% {
+    opacity: 0;
+    transform: translateX(
+      calc(var(--line-width) - 7px)
+    );
+  }
+}
+
+@keyframes need-emphasis {
+  0%, 18%, 100% {
+    border-color: $teal;
+    color: $teal-dark;
+  }
+
+  32%, 84% {
+    border-color: $border;
+    color: $text-soft;
+  }
+}
+
+@keyframes solution-emphasis {
+  0%, 54%, 100% {
+    border-color: $border;
+    color: $text-soft;
+  }
+
+  72%, 88% {
+    border-color: $teal;
+    color: $teal-dark;
+  }
+}
 
   /* PROBLEMA / SOLUCIONES */
 

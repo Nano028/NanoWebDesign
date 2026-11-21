@@ -122,63 +122,53 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================
      ANIMACIÓN HERO
   ========================= */
+const heroVisual = document.querySelector(".hero-visual");
+  const motionToggle = document.querySelector(".hero-motion-toggle");
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (heroVisual && motionToggle) {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
 
-  if (!reduceMotion) {
-    const modules = document.querySelectorAll(".hero-visual .module");
-    const lines = document.querySelectorAll(".hero-visual .module-line");
-    const labels = document.querySelectorAll(".hero-visual .module-label");
+    let userPaused = false;
+    let inView = true;
 
-    modules.forEach((module, index) => {
-      module.animate(
-        [
-          {
-            opacity: 0,
-            transform: "translateY(18px) scale(0.96)",
-          },
-          {
-            opacity: 1,
-            transform: "translateY(0) scale(1)",
-          },
-        ],
-        {
-          duration: 550,
-          delay: 120 + index * 90,
-          easing: "ease-out",
-          fill: "both",
-        },
+    const updateMotion = () => {
+      heroVisual.classList.toggle(
+        "is-animated",
+        !reduceMotion.matches
       );
+
+      heroVisual.classList.toggle(
+        "is-paused",
+        userPaused || !inView || document.hidden
+      );
+
+      motionToggle.hidden = reduceMotion.matches;
+
+      motionToggle.textContent = userPaused
+        ? "Reanudar animación"
+        : "Pausar animación";
+    };
+
+    motionToggle.addEventListener("click", () => {
+      userPaused = !userPaused;
+      updateMotion();
     });
 
-    lines.forEach((line, index) => {
-      line.animate([{ opacity: 0 }, { opacity: 1 }], {
-        duration: 400,
-        delay: 450 + index * 100,
-        easing: "ease-out",
-        fill: "both",
+    reduceMotion.addEventListener("change", updateMotion);
+    document.addEventListener("visibilitychange", updateMotion);
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        inView = entry.isIntersecting;
+        updateMotion();
       });
-    });
 
-    labels.forEach((label, index) => {
-      label.animate(
-        [
-          {
-            opacity: 0,
-            transform: "translateY(6px)",
-          },
-          {
-            opacity: 1,
-            transform: "translateY(0)",
-          },
-        ],
-        {
-          duration: 350,
-          delay: 650 + index * 120,
-          easing: "ease-out",
-          fill: "both",
-        },
-      );
-    });
+      observer.observe(heroVisual);
+    }
+
+    updateMotion();
   }
 });
+

@@ -24,6 +24,11 @@
 ========================= */
 /* =========================================================
    NANO WEB DESIGN
+   style.scss
+   Archivo principal
+========================================================= */
+/* =========================================================
+   NANO WEB DESIGN
    _global.scss
    Estilos generales y elementos reutilizables
 ========================================================= */
@@ -116,6 +121,11 @@ h4 {
 
 p {
   color: #5f666d;
+}
+
+::-moz-selection {
+  background: #14b8a6;
+  color: #111418;
 }
 
 ::selection {
@@ -219,6 +229,7 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 9px;
+  width: -moz-fit-content;
   width: fit-content;
   font-size: 0.82rem;
   font-weight: 700;
@@ -324,6 +335,11 @@ p {
     transition-duration: 0.01ms !important;
   }
 }
+/* =========================================================
+   NANO WEB DESIGN
+   style.scss
+   Archivo principal
+========================================================= */
 /* =========================================================
    NANO WEB DESIGN
    _header.scss
@@ -549,6 +565,11 @@ p {
 }
 /* =========================================================
    NANO WEB DESIGN
+   style.scss
+   Archivo principal
+========================================================= */
+/* =========================================================
+   NANO WEB DESIGN
    _footer.scss
    Footer
 ========================================================= */
@@ -661,6 +682,11 @@ p {
     gap: 8px;
   }
 }
+/* =========================================================
+   NANO WEB DESIGN
+   style.scss
+   Archivo principal
+========================================================= */
 /* =========================================================
    NANO WEB DESIGN
    _home.scss
@@ -786,6 +812,7 @@ p {
 }
 
 .module-line {
+  width: var(--line-width);
   position: absolute;
   z-index: 1;
   height: 1px;
@@ -795,21 +822,21 @@ p {
 .line-a {
   top: 147px;
   left: 122px;
-  width: 170px;
+  --line-width: 170px;
   transform: rotate(15deg);
 }
 
 .line-b {
   top: 280px;
   left: 50px;
-  width: 220px;
+  --line-width: 220px;
   transform: rotate(-14deg);
 }
 
 .line-c {
   right: 52px;
   bottom: 130px;
-  width: 230px;
+  --line-width: 230px;
   transform: rotate(21deg);
 }
 
@@ -1737,13 +1764,54 @@ p {
     height: 42px;
   }
   .line-a {
-    width: 120px;
+    --line-width: 120px;
   }
   .line-b {
-    width: 150px;
+    --line-width: 150px;
   }
   .line-c {
-    width: 160px;
+    --line-width: 160px;
+  }
+  @keyframes module-float {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(var(--float-x, 4px), var(--float-y, -8px));
+    }
+  }
+  @keyframes connection-flow {
+    0%, 6% {
+      opacity: 0;
+      transform: translateX(0) scale(0.5);
+    }
+    12%, 28% {
+      opacity: 1;
+    }
+    34%, 100% {
+      opacity: 0;
+      transform: translateX(calc(var(--line-width) - 7px));
+    }
+  }
+  @keyframes need-emphasis {
+    0%, 18%, 100% {
+      border-color: #14b8a6;
+      color: #0f9486;
+    }
+    32%, 84% {
+      border-color: rgba(17, 20, 24, 0.12);
+      color: #5f666d;
+    }
+  }
+  @keyframes solution-emphasis {
+    0%, 54%, 100% {
+      border-color: rgba(17, 20, 24, 0.12);
+      color: #5f666d;
+    }
+    72%, 88% {
+      border-color: #14b8a6;
+      color: #0f9486;
+    }
   }
   /* PROBLEMA / SOLUCIONES */
   .problem-item,
@@ -1805,6 +1873,4 @@ p {
   .final-cta-actions .btn {
     width: 100%;
   }
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

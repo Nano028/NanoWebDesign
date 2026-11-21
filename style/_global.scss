@@ -18,6 +18,31 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 3px solid $teal-dark;
+  outline-offset: 5px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 24px;
+  z-index: 200;
+  padding: 12px 20px;
+  background: $graphite;
+  color: $white;
+  transform: translateY(-200%);
+
+  &:focus {
+    transform: translateY(0);
+  }
 }
 
 body {

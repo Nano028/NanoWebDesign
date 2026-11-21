@@ -329,8 +329,12 @@
 
   background: $white;
 
-  &:first-child {
+  &:nth-child(odd) {
     border-right: 1px solid $border;
+  }
+
+  &:nth-child(n + 3) {
+    border-top: 1px solid $border;
   }
 
   &::before {
@@ -775,6 +779,45 @@
   grid-template-columns: 1.15fr 0.85fr;
 
   border: 1px solid $border;
+
+  & + & {
+    margin-top: 40px;
+  }
+}
+
+.project-preview.project-preview-sfda {
+  background: linear-gradient(135deg, $teal-soft, $gray-soft);
+}
+
+.project-identity {
+  width: 100%;
+  padding: 40px 0;
+  border-top: 1px solid $teal;
+  border-bottom: 1px solid $border;
+
+  > span {
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  strong {
+    display: block;
+    margin: 18px 0;
+    font-family: $font-display;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.06em;
+  }
+
+  p {
+    max-width: 260px;
+  }
+
+  .project-domain {
+    display: block;
+    margin-top: 45px;
+    color: $teal-dark;
+  }
 }
 
 .project-preview {
@@ -996,6 +1039,83 @@
   margin-top: 42px;
 }
 
+.contact-form {
+  margin-top: 42px;
+  padding-top: 35px;
+  border-top: 1px solid $border-dark;
+}
+
+.contact-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.contact-field {
+  min-width: 0;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    span {
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 400;
+    }
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    background: $surface-dark;
+    color: $white;
+    color-scheme: dark;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+.contact-field-wide {
+  grid-column: 1 / -1;
+}
+
+.contact-form .form-note {
+  margin: 24px 0;
+  font-size: 0.85rem;
+}
+
+.contact-draft {
+  margin-top: 32px;
+  padding: 28px;
+  border: 1px solid $teal;
+
+  h3 {
+    margin-bottom: 14px;
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  pre {
+    margin: 24px 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font: inherit;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
 /* =========================================================
    TABLET
 ========================================================= */
@@ -1141,9 +1261,12 @@
   .solutions-grid {
     grid-template-columns: 1fr;
 
-    .solution-card:first-child {
+    .solution-card {
       border-right: 0;
-      border-bottom: 1px solid $border;
+
+      &:not(:first-child) {
+        border-top: 1px solid $border;
+      }
     }
   }
 
@@ -1202,6 +1325,20 @@
 ========================================================= */
 
 @media (max-width: $bp-mobile) {
+  .contact-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form > .btn,
+  .contact-draft .btn {
+    width: 100%;
+    padding: 12px 16px;
+  }
+
+  .contact-draft {
+    padding: 22px;
+  }
+
   /* HERO */
 
   .hero {

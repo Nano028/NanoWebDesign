@@ -1,0 +1,150 @@
+/* =========================================================
+   NANO WEB DESIGN
+   _footer.scss
+   Footer
+========================================================= */
+
+@use "variables" as *;
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+  padding: 70px 0 25px;
+
+  background: #0b0d0f;
+  color: $white;
+}
+
+/* =========================
+   ESTRUCTURA
+========================= */
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.7fr 0.65fr 0.65fr;
+  gap: 80px;
+
+  padding-bottom: 60px;
+}
+
+/* =========================
+   MARCA
+========================= */
+
+.brand-footer {
+  .brand-text {
+    strong {
+      color: $white;
+    }
+
+    small {
+      color: rgba(255, 255, 255, 0.45);
+    }
+  }
+}
+
+.footer-brand {
+  p {
+    max-width: 320px;
+
+    margin-top: 25px;
+    margin-bottom: 0;
+
+    color: rgba(255, 255, 255, 0.45);
+  }
+}
+
+/* =========================
+   COLUMNAS
+========================= */
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 11px;
+
+  a {
+    font-size: 0.82rem;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    transition: color $transition;
+
+    &:hover {
+      color: $teal;
+    }
+  }
+}
+
+.footer-title {
+  margin-bottom: 9px;
+
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: $white;
+}
+
+/* =========================
+   PARTE INFERIOR
+========================= */
+
+.footer-bottom {
+  padding-top: 22px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  font-size: 0.67rem;
+  letter-spacing: 0.04em;
+
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: $bp-nav) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: $bp-mobile) {
+  .site-footer {
+    padding-top: 55px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+
+    .footer-brand {
+      grid-column: auto;
+    }
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+}

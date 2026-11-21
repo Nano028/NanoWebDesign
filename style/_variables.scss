@@ -1,0 +1,52 @@
+/* =========================
+   COLORES
+========================= */
+
+$teal: #14b8a6;
+$teal-dark: #0f9486;
+$teal-soft: rgba(20, 184, 166, 0.08);
+
+$graphite: #111418;
+$surface-dark: #1d2228;
+
+$text: #111418;
+$text-soft: #5f666d;
+
+$gray: #e5e7eb;
+$gray-soft: #f5f6f6;
+
+$white: #ffffff;
+
+/* =========================
+   BORDES
+========================= */
+
+$border: rgba(17, 20, 24, 0.12);
+$border-dark: rgba(255, 255, 255, 0.12);
+
+/* =========================
+   TIPOGRAFÍAS
+========================= */
+
+$font-display: "Space Grotesk", sans-serif;
+$font-body: "Inter", sans-serif;
+
+/* =========================
+   LAYOUT
+========================= */
+
+$container: 1180px;
+
+/* =========================
+   TRANSICIONES
+========================= */
+
+$transition: 0.25s ease;
+
+/* =========================
+   BREAKPOINTS
+========================= */
+
+$bp-tablet: 1024px;
+$bp-nav: 820px;
+$bp-mobile: 560px;

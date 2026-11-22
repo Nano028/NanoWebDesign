@@ -90,11 +90,23 @@
 .hero-visual {
   position: relative;
   min-height: 470px;
+  --module-b-right: 70px;
+  --module-c-left: 100px;
+  --module-c-width: 135px;
+  --module-c-edge: 235px;
+  --module-c-line-y: 350px;
+  --module-d-right: 35px;
+  --module-d-width: 95px;
 }
 
 .module {
   position: absolute;
   z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px 16px;
 
   border: 1px solid rgba(20, 184, 166, 0.55);
   background: $white;
@@ -121,39 +133,57 @@
 
 .module-b {
   top: 115px;
-  right: 70px;
+  right: var(--module-b-right);
 
   width: 150px;
   height: 88px;
 
   background: $teal;
+  color: $white;
 }
 
 .module-c {
   top: 230px;
-  left: 135px;
+  left: var(--module-c-left);
 
-  width: 135px;
+  width: var(--module-c-width);
   height: 135px;
 }
 
 .module-d {
-  right: 35px;
+  right: var(--module-d-right);
   bottom: 35px;
 
-  width: 95px;
-  height: 95px;
+  width: var(--module-d-width);
+  height: var(--module-d-width);
 }
 
-.module-e {
-  left: 10px;
-  bottom: 80px;
+.module-step {
+  font-family: $font-display;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: $teal-dark;
+}
 
-  width: 58px;
-  height: 58px;
+.module-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  text-align: center;
 
-  background: $graphite;
-  border-color: $graphite;
+  font-family: $font-display;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.module-b .module-step {
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .module-line {
@@ -167,77 +197,137 @@
 }
 
 .line-a {
-  top: 147px;
-  left: 122px;
-
-  --line-width: 170px;
-
-  transform: rotate(15deg);
+  top: 125px;
+  left: 150px;
+  --line-width: calc(100% - var(--module-b-right) - 296px);
+  transform: rotate(13.5deg);
+  transform-origin: left center;
 }
 
 .line-b {
-  top: 280px;
-  left: 50px;
-
-  --line-width: 220px;
-
-  transform: rotate(-14deg);
+  top: 203px;
+  left: calc(100% - var(--module-b-right) - 150px);
+  --line-width: calc(100% - var(--module-b-right) - 150px - var(--module-c-edge) + 9px);
+  transform: rotate(146deg);
+  transform-origin: left center;
 }
 
 .line-c {
-  right: 52px;
-  bottom: 130px;
-
-  --line-width: 230px;
-
-  transform: rotate(21deg);
+  top: var(--module-c-line-y);
+  left: var(--module-c-edge);
+  --line-width: calc(100% - var(--module-c-edge) - var(--module-d-right) - var(--module-d-width) + 3px);
+  transform: rotate(11deg);
+  transform-origin: left center;
 }
 
-.module-label {
+.hero-visual-container {
+  position: relative;
+  min-width: 0;
+  padding-bottom: 38px;
+}
+
+.hero-motion-toggle {
   position: absolute;
-
-  padding: 5px 8px;
-
-  border: 1px solid $border;
-  background: $white;
-
-  font-family: $font-display;
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-
+  right: 0;
+  bottom: 0;
+  min-height: 32px;
+  padding: 4px 0;
+  background: transparent;
   color: $text-soft;
+  font-size: 0.875rem;
+  cursor: pointer;
+
+  &:hover {
+    color: $teal-dark;
+    text-decoration: underline;
+  }
 }
 
-.label-a {
-  top: 88px;
-  left: 5px;
+.module-line::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $teal-dark;
+  box-shadow: 0 0 12px rgba(20, 184, 166, 0.5);
+  opacity: 0;
 }
 
-.label-b {
-  right: 20px;
-  bottom: 85px;
-
-  color: $teal;
+.line-b {
+  --flow-delay: 2.4s;
 }
 
- @keyframes module-float {
+.line-c {
+  --flow-delay: 4.8s;
+}
+
+.hero-visual.is-animated {
+  animation: diagram-drift 9s ease-in-out infinite;
+
+  .module {
+    animation: module-emphasis 8s ease-in-out var(--stage-delay, 0s) infinite;
+  }
+
+  .module-line::after {
+    animation: connection-flow 8s ease-in-out var(--flow-delay, 0s) infinite;
+  }
+
+}
+
+.module-a {
+  --stage-delay: 0s;
+}
+
+.module-b {
+  --stage-delay: 1.2s;
+}
+
+.module-c {
+  --stage-delay: 2.4s;
+}
+
+.module-d {
+  --stage-delay: 4.8s;
+}
+
+.hero-visual.is-animated.is-paused {
+  &,
+  *,
+  *::after {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes diagram-drift {
   0%, 100% {
-    transform: translate(0, 0);
+    translate: 0 0;
   }
 
   50% {
-    transform: translate(
-      var(--float-x, 4px),
-      var(--float-y, -8px)
-    );
+    translate: 0 -4px;
+  }
+}
+
+@keyframes module-emphasis {
+  0%, 100% {
+    box-shadow: 0 12px 35px rgba(17, 20, 24, 0.04);
+  }
+
+  50% {
+    box-shadow:
+      0 12px 35px rgba(17, 20, 24, 0.08),
+      0 0 0 4px rgba(20, 184, 166, 0.12);
   }
 }
 
 @keyframes connection-flow {
   0%, 6% {
     opacity: 0;
-    transform: translateX(0) scale(0.5);
+    left: 0;
+    transform: scale(0.5);
   }
 
   12%, 28% {
@@ -246,35 +336,11 @@
 
   34%, 100% {
     opacity: 0;
-    transform: translateX(
-      calc(var(--line-width) - 7px)
-    );
+    left: calc(100% - 7px);
+    transform: scale(1);
   }
 }
 
-@keyframes need-emphasis {
-  0%, 18%, 100% {
-    border-color: $teal;
-    color: $teal-dark;
-  }
-
-  32%, 84% {
-    border-color: $border;
-    color: $text-soft;
-  }
-}
-
-@keyframes solution-emphasis {
-  0%, 54%, 100% {
-    border-color: $border;
-    color: $text-soft;
-  }
-
-  72%, 88% {
-    border-color: $teal;
-    color: $teal-dark;
-  }
-}
 /* =========================================================
    PROBLEMA
 ========================================================= */
@@ -1183,7 +1249,7 @@
   }
 
   .hero-inner {
-    grid-template-columns: 1fr 0.75fr;
+    grid-template-columns: minmax(0, 1.1fr) minmax(380px, 0.9fr);
     gap: 35px;
   }
 
@@ -1194,6 +1260,14 @@
   }
 
   .hero-visual {
+    --module-b-right: 35px;
+    --module-c-left: calc(100% - 350px);
+    --module-c-width: 125px;
+    --module-c-edge: calc(100% - 225px);
+    --module-c-line-y: 350px;
+    --module-d-right: 20px;
+    --module-d-width: 85px;
+
     transform: scale(0.85);
     transform-origin: center;
   }
@@ -1270,7 +1344,7 @@
   .hero-visual {
     width: 100%;
     max-width: 520px;
-    min-height: 380px;
+    min-height: 470px;
 
     margin-inline: auto;
 
@@ -1423,6 +1497,14 @@
   }
 
   .hero-visual {
+    --module-b-right: 25px;
+    --module-c-left: calc(100% - 250px);
+    --module-c-width: 95px;
+    --module-c-edge: calc(var(--module-c-left) + var(--module-c-width));
+    --module-c-line-y: 265px;
+    --module-d-right: 25px;
+    --module-d-width: 70px;
+
     min-height: 310px;
   }
 
@@ -1433,47 +1515,96 @@
 
     width: 80px;
     height: 80px;
+
+    padding: 11px 8px;
   }
 
   .module-b {
-    right: 25px;
+    right: var(--module-b-right);
 
     width: 115px;
     height: 70px;
+
+    padding: 10px;
   }
 
   .module-c {
-    top: 185px;
-    left: 95px;
+    top: 205px;
+    left: var(--module-c-left);
 
-    width: 95px;
-    height: 95px;
+    width: var(--module-c-width);
+    height: var(--module-c-width);
+
+    padding: 12px 10px;
   }
 
   .module-d {
-    right: 25px;
-
-    width: 70px;
-    height: 70px;
+    right: var(--module-d-right);
+    width: var(--module-d-width);
+    height: var(--module-d-width);
+    padding: 10px 7px;
   }
 
-  .module-e {
-    bottom: 55px;
+  .module-step {
+    font-size: 0.52rem;
+  }
 
-    width: 42px;
-    height: 42px;
+  .module-name {
+    font-size: 0.7rem;
+  }
+
+  .module-d .module-name {
+    font-size: 0.58rem;
   }
 
   .line-a {
-    --line-width: 120px;
+    top: 110px;
+    left: 100px;
+    --line-width: calc(100% - 238px);
+    transform: rotate(7deg);
   }
 
   .line-b {
-    --line-width: 150px;
+    top: 185px;
+    left: calc(100% - var(--module-b-right) - 115px);
+    --line-width: calc(100% - var(--module-b-right) - 115px - var(--module-c-edge) + 10px);
+    transform: rotate(130deg);
   }
 
   .line-c {
-    --line-width: 160px;
+    top: var(--module-c-line-y);
+    left: var(--module-c-edge);
+    --line-width: calc(100% - var(--module-c-edge) - var(--module-d-right) - var(--module-d-width) + 3px);
+    transform: rotate(-18deg);
+  }
+
+  @media (max-width: 340px) {
+    .hero-visual {
+      --module-b-right: 10px;
+      --module-c-left: calc(100% - 200px);
+      --module-c-width: 80px;
+      --module-c-edge: calc(100% - 120px);
+      --module-d-right: 10px;
+      --module-d-width: 60px;
+    }
+
+    .module-b {
+      width: 95px;
+    }
+
+    .module-c .module-name {
+      font-size: 0.62rem;
+    }
+
+    .line-a {
+      top: 111px;
+      --line-width: calc(100% - 204px);
+    }
+
+    .line-b {
+      left: calc(100% - var(--module-b-right) - 95px);
+      --line-width: calc(100% - var(--module-b-right) - 95px - var(--module-c-edge) + 10px);
+    }
   }
  
 

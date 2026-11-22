@@ -863,6 +863,47 @@ p {
   color: #14b8a6;
 }
 
+@keyframes module-float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(var(--float-x, 4px), var(--float-y, -8px));
+  }
+}
+@keyframes connection-flow {
+  0%, 6% {
+    opacity: 0;
+    transform: translateX(0) scale(0.5);
+  }
+  12%, 28% {
+    opacity: 1;
+  }
+  34%, 100% {
+    opacity: 0;
+    transform: translateX(calc(var(--line-width) - 7px));
+  }
+}
+@keyframes need-emphasis {
+  0%, 18%, 100% {
+    border-color: #14b8a6;
+    color: #0f9486;
+  }
+  32%, 84% {
+    border-color: rgba(17, 20, 24, 0.12);
+    color: #5f666d;
+  }
+}
+@keyframes solution-emphasis {
+  0%, 54%, 100% {
+    border-color: rgba(17, 20, 24, 0.12);
+    color: #5f666d;
+  }
+  72%, 88% {
+    border-color: #14b8a6;
+    color: #0f9486;
+  }
+}
 /* =========================================================
    PROBLEMA
 ========================================================= */
@@ -1771,47 +1812,6 @@ p {
   }
   .line-c {
     --line-width: 160px;
-  }
-  @keyframes module-float {
-    0%, 100% {
-      transform: translate(0, 0);
-    }
-    50% {
-      transform: translate(var(--float-x, 4px), var(--float-y, -8px));
-    }
-  }
-  @keyframes connection-flow {
-    0%, 6% {
-      opacity: 0;
-      transform: translateX(0) scale(0.5);
-    }
-    12%, 28% {
-      opacity: 1;
-    }
-    34%, 100% {
-      opacity: 0;
-      transform: translateX(calc(var(--line-width) - 7px));
-    }
-  }
-  @keyframes need-emphasis {
-    0%, 18%, 100% {
-      border-color: #14b8a6;
-      color: #0f9486;
-    }
-    32%, 84% {
-      border-color: rgba(17, 20, 24, 0.12);
-      color: #5f666d;
-    }
-  }
-  @keyframes solution-emphasis {
-    0%, 54%, 100% {
-      border-color: rgba(17, 20, 24, 0.12);
-      color: #5f666d;
-    }
-    72%, 88% {
-      border-color: #14b8a6;
-      color: #0f9486;
-    }
   }
   /* PROBLEMA / SOLUCIONES */
   .problem-item,
